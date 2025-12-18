@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Launcher for Ollama GUI
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LOCAL_APP="$SCRIPT_DIR/ollama_gui.py"
+SYS_APP="/usr/share/ollama-gui/ollama_gui.py"
+
+TARGET="$LOCAL_APP"
+if [[ -f "$SYS_APP" ]]; then
+  TARGET="$SYS_APP"
+fi
+
+exec python3 "$TARGET" "$@"
